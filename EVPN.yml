@@ -114,7 +114,6 @@
             path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f2.name }}/config-deploy"
             json_data: "{{ {} | to_json }}"
 
-
     -   name: "Add FABRIC {{ switch_fabrics.f1.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
         ansible.builtin.include_role:
             name: ndfc_rest_fabric_msd_child_add
@@ -135,4 +134,3 @@
         vars:
             msd_fabric: "{{msd_fabrics.MSD.name}}"
             child_fabric: "{{ dci_fabrics.DCI.name }}"
-    -   name: "Add FABRIC {{ dci_fabrics.DCI.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
