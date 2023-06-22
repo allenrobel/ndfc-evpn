@@ -78,13 +78,13 @@
             -   "{{ devices.boder_gateway_11 }}"
             -   "{{ devices.boder_gateway_12 }}"
 
-    -   name: main REST POST config-save FABRIC {{ switch_fabrics.f1.name }}
+    -   name: "main REST POST config-save FABRIC {{ switch_fabrics.f1.name }}"
         cisco.dcnm.dcnm_rest:
             method: POST
             path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f1.name }}/config-save"
             json_data: "{{ {} | to_json }}"
 
-    -   name: main REST POST config-deploy FABRIC {{ switch_fabrics.f1.name }}
+    -   name: "main REST POST config-deploy FABRIC {{ switch_fabrics.f1.name }}"
         cisco.dcnm.dcnm_rest:
             method: POST
             path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f1.name }}/config-deploy"
@@ -102,34 +102,37 @@
             -   "{{ devices.boder_gateway_21 }}"
             -   "{{ devices.boder_gateway_22 }}"
 
-    -   name: main REST POST config-save FABRIC {{ switch_fabrics.f2.name }}
+    -   name: "main REST POST config-save FABRIC {{ switch_fabrics.f2.name }}"
         cisco.dcnm.dcnm_rest:
             method: POST
             path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f2.name }}/config-save"
             json_data: "{{ {} | to_json }}"
 
-    -   name: main REST POST config-deploy FABRIC {{ switch_fabrics.f2.name }}
+    -   name: "main REST POST config-deploy FABRIC {{ switch_fabrics.f2.name }}"
         cisco.dcnm.dcnm_rest:
             method: POST
             path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f2.name }}/config-deploy"
             json_data: "{{ {} | to_json }}"
 
 
-    -   roles:
-            - ndfc_rest_fabric_msd_child_add
+    -   name: "Add FABRIC {{ switch_fabrics.f1.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
+        ansible.builtin.include_role:
+            name: ndfc_rest_fabric_msd_child_add
         vars:
             msd_fabric: "{{msd_fabrics.MSD.name}}"
             child_fabric: "{{ switch_fabrics.f1.name }}"
 
-    -   roles:
-            - ndfc_rest_fabric_msd_child_add
+    -   name: "Add FABRIC {{ switch_fabrics.f2.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
+        ansible.builtin.include_role:
+            name: ndfc_rest_fabric_msd_child_add
         vars:
             msd_fabric: "{{msd_fabrics.MSD.name}}"
             child_fabric: "{{ switch_fabrics.f2.name }}"
 
-    -   roles:
-            - ndfc_rest_fabric_msd_child_add
+    -   name: "Add FABRIC {{ dci_fabrics.DCI.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
+        ansible.builtin.include_role:
+            name: ndfc_rest_fabric_msd_child_add
         vars:
             msd_fabric: "{{msd_fabrics.MSD.name}}"
             child_fabric: "{{ dci_fabrics.DCI.name }}"
-    # -   name: "Add FABRIC {{ dci_fabrics.DCI.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
+    -   name: "Add FABRIC {{ dci_fabrics.DCI.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
