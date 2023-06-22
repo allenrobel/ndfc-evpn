@@ -14,7 +14,13 @@ preserve_config: False
 max_hops: 0
 device_username: admin
 device_auth_proto: MD5
-device_password: admin123
+device_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          33323938363130313230303733376135303135636431366339633230316163653439343130373761
+          3037623934666239326134303133303366323862333031610a393130363665373564653665366433
+          37383865633239353566666463663764376532373666616633316338643231353735303034386233
+          6237663162636162610a366362356461326537393861303932343937356336313133373066396539
+          3734
 
 # DCI Fabric parameters
 # These are created with the External_Fabric template
@@ -654,6 +660,7 @@ switch_fabrics:
 devices:
     # switch_fabric f1 ----------------------------------------------
     leaf_11:
+        name: leaf_1311
         role: leaf
         seed_ip: 192.168.2.131
         max_hops: "{{ max_hops }}"
