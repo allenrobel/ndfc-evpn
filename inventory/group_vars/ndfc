@@ -655,7 +655,7 @@ devices:
     # switch_fabric f1 ----------------------------------------------
     leaf_11:
         role: leaf
-        seed_ip: 192.168.4.131
+        seed_ip: 192.168.2.131
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -663,7 +663,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     leaf_12:
         role: leaf
-        seed_ip: 192.168.4.132
+        seed_ip: 192.168.2.132
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -671,7 +671,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     spine_11:
         role: spine
-        seed_ip: 192.168.4.151
+        seed_ip: 192.168.2.151
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -679,7 +679,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     spine_12:
         role: spine
-        seed_ip: 192.168.4.152
+        seed_ip: 192.168.2.152
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -687,7 +687,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     border_gateway_11:
         role: border_gateway
-        seed_ip: 192.168.4.161
+        seed_ip: 192.168.2.161
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -695,7 +695,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     border_gateway_12:
         role: border_gateway
-        seed_ip: 192.168.4.162
+        seed_ip: 192.168.2.162
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -705,7 +705,7 @@ devices:
     # switch_fabric f2 ----------------------------------------------
     leaf_21:
         role: leaf
-        seed_ip: 192.168.4.133
+        seed_ip: 192.168.2.133
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -713,7 +713,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     leaf_22:
         role: leaf
-        seed_ip: 192.168.4.134
+        seed_ip: 192.168.2.134
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -721,7 +721,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     spine_21:
         role: spine
-        seed_ip: 192.168.4.153
+        seed_ip: 192.168.2.153
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -729,14 +729,14 @@ devices:
         preserve_config: "{{ preserve_config }}"
     spine_22:
         role: spine
-        seed_ip: 192.168.4.154
+        seed_ip: 192.168.2.154
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
         user_name: "{{ device_username }}"
         preserve_config: "{{ preserve_config }}"
     border_gateway_21:
-        seed_ip: 192.168.4.163
+        seed_ip: 192.168.2.163
         role: border_gateway
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
@@ -745,7 +745,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     border_gateway_22:
         role: border_gateway
-        seed_ip: 192.168.4.164
+        seed_ip: 192.168.2.164
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
@@ -753,7 +753,7 @@ devices:
         preserve_config: "{{ preserve_config }}"
     dci_31:
         role: core_router
-        seed_ip: 192.168.4.171
+        seed_ip: 192.168.2.171
         max_hops: "{{ max_hops }}"
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
