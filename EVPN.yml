@@ -114,6 +114,26 @@
             path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f2.name }}/config-deploy"
             json_data: "{{ {} | to_json }}"
 
+    -   name: "Fabric {{ dci_fabrics.DCI.name }} - Add switches"
+        cisco.dcnm.dcnm_inventory:
+            fabric: "{{ switch_fabrics.f2.name }}"
+            state: merged
+            config:
+            -   "{{ devices.dci_11 }}"
+
+    -   name: "main REST POST config-save FABRIC {{ dci_fabrics.DCI.name }}"
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ dci_fabrics.DCI.name }}/config-save"
+            json_data: "{{ {} | to_json }}"
+
+    -   name: "main REST POST config-deploy FABRIC {{ dci_fabrics.DCI.name }}"
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ dci_fabrics.DCI.name }}/config-deploy"
+            json_data: "{{ {} | to_json }}"
+
+
     -   name: "Add FABRIC {{ switch_fabrics.f1.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
         ansible.builtin.include_role:
             name: ndfc_rest_fabric_msd_child_add
