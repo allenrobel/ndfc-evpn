@@ -10,6 +10,17 @@ ansible_password: !vault |
           62653166336137303863393062643739616133663137643039663365633434343432326138656138
           3664343266316636640a666332633636303535363534336263333066333733373933353638663665
           3839
+preserve_config: False
+max_hops: 0
+device_username: admin
+device_auth_proto: MD5
+device_password: !vault |
+        $ANSIBLE_VAULT;1.1;AES256
+        39633834633537663061663539313532636263366231336166666465396634306233303964323464
+        3937393663366236386263333539326439343733633731300a316366333137626161383065343665
+        66393637363633313262643261666434653862373437643239663066363234363630313164653963
+        3335353461333461630a643732393063653736633063643432303561333465666535396662396165
+        6238
 
 # DCI Fabric parameters
 # These are created with the External_Fabric template
@@ -647,28 +658,16 @@ switch_fabrics:
 
 
 devices:
-    common:
-        device_auth_proto: MD5
-        preserve_config: False
-        max_hops: 0
-        device_username: admin
-        device_password: !vault |
-                $ANSIBLE_VAULT;1.1;AES256
-                39633834633537663061663539313532636263366231336166666465396634306233303964323464
-                3937393663366236386263333539326439343733633731300a316366333137626161383065343665
-                66393637363633313262643261666434653862373437643239663066363234363630313164653963
-                3335353461333461630a643732393063653736633063643432303561333465666535396662396165
-                6238
     # switch_fabric f1 ----------------------------------------------
     leaf_11:
         name: leaf_1311
         role: leaf
         seed_ip: 192.168.4.131
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     leaf_12:
         name: leaf_1312
         role: leaf
