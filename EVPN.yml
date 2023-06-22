@@ -1,0 +1,137 @@
+---
+-   name: EVPN Create
+    gather_facts: false
+    hosts:
+    -   ndfc
+    vars:
+    tasks:
+    -   name: "Create Fabric MSD {{msd_fabrics.MSD.name}}"
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
+            json_data: "{{ vars_dict | to_json }}"
+        register: r1
+        vars:
+            vars_dict:
+                fabricName: "{{msd_fabrics.MSD.name}}"
+                templateName: "{{msd_fabrics.MSD.templateName}}"
+                nvPairs: "{{msd_fabrics.MSD.nvPairs}}"
+    -   name: debug r1
+        ansible.builtin.debug:
+            msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
+
+    -   name: "Create Fabric DCI {{dci_fabrics.DCI.name}}"
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
+            json_data: "{{ vars_dict | to_json }}"
+        register: r1
+        vars:
+            vars_dict:
+                fabricName: "{{msd_fabrics.DCI.name}}"
+                templateName: "{{msd_fabrics.DCI.templateName}}"
+                nvPairs: "{{msd_fabrics.DCI.nvPairs}}"
+    -   name: debug r1
+        ansible.builtin.debug:
+            msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
+
+
+    -   name: "Create Fabric Switch f1 {{switch_fabrics.f1.name}}"
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
+            json_data: "{{ vars_dict | to_json }}"
+        register: r1
+        vars:
+            vars_dict:
+                fabricName: "{{switch_fabrics.f1.name}}"
+                templateName: "{{msd_fabrics.f1.templateName}}"
+                nvPairs: "{{msd_fabrics.f1.nvPairs}}"
+    -   name: debug r1
+        ansible.builtin.debug:
+            msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
+
+    -   name: "Create Fabric Switch f2 {{switch_fabrics.f2.name}}"
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
+            json_data: "{{ vars_dict | to_json }}"
+        register: r1
+        vars:
+            vars_dict:
+                fabricName: "{{switch_fabrics.f2.name}}"
+                templateName: "{{msd_fabrics.f2.templateName}}"
+                nvPairs: "{{msd_fabrics.f2.nvPairs}}"
+    -   name: debug r1
+        ansible.builtin.debug:
+            msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
+
+    -   name: "Fabric {{ switch_fabrics.f1.name }} - Add switches"
+        cisco.dcnm.dcnm_inventory:
+            fabric: "{{ switch_fabrics.f1.name }}"
+            state: merged
+            config:
+            -   "{{ devices.leaf_11 }}"
+            -   "{{ devices.leaf_12 }}"
+            -   "{{ devices.spine_11 }}"
+            -   "{{ devices.spine_12 }}"
+            -   "{{ devices.boder_gateway_11 }}"
+            -   "{{ devices.boder_gateway_12 }}"
+
+    -   name: main REST POST config-save FABRIC {{ switch_fabrics.f1.name }}
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f1.name }}/config-save"
+            json_data: "{{ {} | to_json }}"
+
+    -   name: main REST POST config-deploy FABRIC {{ switch_fabrics.f1.name }}
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f1.name }}/config-deploy"
+            json_data: "{{ {} | to_json }}"
+
+    -   name: "Fabric {{ switch_fabrics.f2.name }} - Add switches"
+        cisco.dcnm.dcnm_inventory:
+            fabric: "{{ switch_fabrics.f2.name }}"
+            state: merged
+            config:
+            -   "{{ devices.leaf_21 }}"
+            -   "{{ devices.leaf_22 }}"
+            -   "{{ devices.spine_21 }}"
+            -   "{{ devices.spine_22 }}"
+            -   "{{ devices.boder_gateway_21 }}"
+            -   "{{ devices.boder_gateway_22 }}"
+
+    -   name: main REST POST config-save FABRIC {{ switch_fabrics.f2.name }}
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f2.name }}/config-save"
+            json_data: "{{ {} | to_json }}"
+
+    -   name: main REST POST config-deploy FABRIC {{ switch_fabrics.f2.name }}
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ switch_fabrics.f2.name }}/config-deploy"
+            json_data: "{{ {} | to_json }}"
+
+
+    -   name: Add FABRIC {{ switch_fabrics.f1.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}
+        roles:
+            - ndfc_rest_fabric_msd_child_add
+        vars:
+            msd_fabric: "{{msd_fabrics.MSD.name}}"
+            child_fabric: "{{ switch_fabrics.f1.name }}"
+
+    -   name: Add FABRIC {{ switch_fabrics.f2.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}
+        roles:
+            - ndfc_rest_fabric_msd_child_add
+        vars:
+            msd_fabric: "{{msd_fabrics.MSD.name}}"
+            child_fabric: "{{ switch_fabrics.f2.name }}"
+
+    -   name: Add FABRIC {{ dci_fabrics.DCI.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}
+        roles:
+            - ndfc_rest_fabric_msd_child_add
+        vars:
+            msd_fabric: "{{msd_fabrics.MSD.name}}"
+            child_fabric: "{{ dci_fabrics.DCI.name }}"
