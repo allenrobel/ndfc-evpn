@@ -669,11 +669,11 @@ devices:
         name: leaf_1311
         role: leaf
         seed_ip: 192.168.4.131
-        max_hops: "{{ max_hops }}"
-        auth_proto: "{{ device_auth_proto }}"
-        password: "{{ device_password }}"
-        user_name: "{{ device_username }}"
-        preserve_config: "{{ preserve_config }}"
+        max_hops: 0
+        auth_proto: MD5
+        password: foo
+        user_name: admin
+        preserve_config: false
     leaf_12:
         name: leaf_1312
         role: leaf
