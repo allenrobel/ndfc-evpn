@@ -28,9 +28,9 @@
         register: r1
         vars:
             vars_dict:
-                fabricName: "{{msd_fabrics.DCI.name}}"
-                templateName: "{{msd_fabrics.DCI.templateName}}"
-                nvPairs: "{{msd_fabrics.DCI.nvPairs}}"
+                fabricName: "{{dci_fabrics.DCI.name}}"
+                templateName: "{{dci_fabrics.DCI.templateName}}"
+                nvPairs: "{{dci_fabrics.DCI.nvPairs}}"
     -   name: debug r1
         ansible.builtin.debug:
             msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
