@@ -3,17 +3,6 @@ ansible_network_os: cisco.dcnm.dcnm
 ansible_httpapi_validate_certs: no
 ansible_httpapi_use_ssl: yes
 ansible_user: admin
-device_auth_proto: MD5
-device_username: admin
-preserve_config: False
-max_hops: 0
-device_password: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          39633834633537663061663539313532636263366231336166666465396634306233303964323464
-          3937393663366236386263333539326439343733633731300a316366333137626161383065343665
-          66393637363633313262643261666434653862373437643239663066363234363630313164653963
-          3335353461333461630a643732393063653736633063643432303561333465666535396662396165
-          6238
 ansible_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           32346636363231396435393738623235643737646436376531643666353664316364393438613238
@@ -660,20 +649,26 @@ switch_fabrics:
 devices:
     common:
         device_auth_proto: MD5
-        device_username: admin
-        device_password: Cisco!2345
         preserve_config: False
         max_hops: 0
+        device_username: admin
+        device_password: !vault |
+                $ANSIBLE_VAULT;1.1;AES256
+                39633834633537663061663539313532636263366231336166666465396634306233303964323464
+                3937393663366236386263333539326439343733633731300a316366333137626161383065343665
+                66393637363633313262643261666434653862373437643239663066363234363630313164653963
+                3335353461333461630a643732393063653736633063643432303561333465666535396662396165
+                6238
     # switch_fabric f1 ----------------------------------------------
     leaf_11:
         name: leaf_1311
         role: leaf
         seed_ip: 192.168.4.131
-        max_hops: 0
-        auth_proto: MD5
-        password: foo
-        user_name: admin
-        preserve_config: false
+        max_hops: "{{ devices.common.max_hops }}"
+        auth_proto: "{{ devices.common.device_auth_proto }}"
+        password: "{{ devices.common.device_password }}"
+        user_name: "{{ devices.common.device_username }}"
+        preserve_config: "{{ devices.common.preserve_config }}"
     leaf_12:
         name: leaf_1312
         role: leaf
