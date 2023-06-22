@@ -75,8 +75,8 @@
             -   "{{ devices.leaf_12 }}"
             -   "{{ devices.spine_11 }}"
             -   "{{ devices.spine_12 }}"
-            -   "{{ devices.boder_gateway_11 }}"
-            -   "{{ devices.boder_gateway_12 }}"
+            -   "{{ devices.border_gateway_11 }}"
+            -   "{{ devices.border_gateway_12 }}"
 
     -   name: "main REST POST config-save FABRIC {{ switch_fabrics.f1.name }}"
         cisco.dcnm.dcnm_rest:
@@ -99,8 +99,8 @@
             -   "{{ devices.leaf_22 }}"
             -   "{{ devices.spine_21 }}"
             -   "{{ devices.spine_22 }}"
-            -   "{{ devices.boder_gateway_21 }}"
-            -   "{{ devices.boder_gateway_22 }}"
+            -   "{{ devices.border_gateway_21 }}"
+            -   "{{ devices.border_gateway_22 }}"
 
     -   name: "main REST POST config-save FABRIC {{ switch_fabrics.f2.name }}"
         cisco.dcnm.dcnm_rest:
