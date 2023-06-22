@@ -115,21 +115,21 @@
             json_data: "{{ {} | to_json }}"
 
 
-    -   name: Add FABRIC {{ switch_fabrics.f1.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}
+    -   name: "Add FABRIC {{ switch_fabrics.f1.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
         roles:
             - ndfc_rest_fabric_msd_child_add
         vars:
             msd_fabric: "{{msd_fabrics.MSD.name}}"
             child_fabric: "{{ switch_fabrics.f1.name }}"
 
-    -   name: Add FABRIC {{ switch_fabrics.f2.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}
+    -   name: "Add FABRIC {{ switch_fabrics.f2.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
         roles:
             - ndfc_rest_fabric_msd_child_add
         vars:
             msd_fabric: "{{msd_fabrics.MSD.name}}"
             child_fabric: "{{ switch_fabrics.f2.name }}"
 
-    -   name: Add FABRIC {{ dci_fabrics.DCI.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}
+    -   name: "Add FABRIC {{ dci_fabrics.DCI.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
         roles:
             - ndfc_rest_fabric_msd_child_add
         vars:
