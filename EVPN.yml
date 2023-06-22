@@ -5,66 +5,66 @@
     -   ndfc
     vars:
     tasks:
-    -   name: "Create Fabric MSD {{msd_fabrics.MSD.name}}"
-        cisco.dcnm.dcnm_rest:
-            method: POST
-            path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
-            json_data: "{{ vars_dict | to_json }}"
-        register: r1
-        vars:
-            vars_dict:
-                fabricName: "{{msd_fabrics.MSD.name}}"
-                templateName: "{{msd_fabrics.MSD.templateName}}"
-                nvPairs: "{{msd_fabrics.MSD.nvPairs}}"
-    -   name: debug r1
-        ansible.builtin.debug:
-            msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
+    # -   name: "Create Fabric MSD {{msd_fabrics.MSD.name}}"
+    #     cisco.dcnm.dcnm_rest:
+    #         method: POST
+    #         path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
+    #         json_data: "{{ vars_dict | to_json }}"
+    #     register: r1
+    #     vars:
+    #         vars_dict:
+    #             fabricName: "{{msd_fabrics.MSD.name}}"
+    #             templateName: "{{msd_fabrics.MSD.templateName}}"
+    #             nvPairs: "{{msd_fabrics.MSD.nvPairs}}"
+    # -   name: debug r1
+    #     ansible.builtin.debug:
+    #         msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
 
-    -   name: "Create Fabric DCI {{dci_fabrics.DCI.name}}"
-        cisco.dcnm.dcnm_rest:
-            method: POST
-            path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
-            json_data: "{{ vars_dict | to_json }}"
-        register: r1
-        vars:
-            vars_dict:
-                fabricName: "{{dci_fabrics.DCI.name}}"
-                templateName: "{{dci_fabrics.DCI.templateName}}"
-                nvPairs: "{{dci_fabrics.DCI.nvPairs}}"
-    -   name: debug r1
-        ansible.builtin.debug:
-            msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
+    # -   name: "Create Fabric DCI {{dci_fabrics.DCI.name}}"
+    #     cisco.dcnm.dcnm_rest:
+    #         method: POST
+    #         path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
+    #         json_data: "{{ vars_dict | to_json }}"
+    #     register: r1
+    #     vars:
+    #         vars_dict:
+    #             fabricName: "{{dci_fabrics.DCI.name}}"
+    #             templateName: "{{dci_fabrics.DCI.templateName}}"
+    #             nvPairs: "{{dci_fabrics.DCI.nvPairs}}"
+    # -   name: debug r1
+    #     ansible.builtin.debug:
+    #         msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
 
 
-    -   name: "Create Fabric Switch f1 {{switch_fabrics.f1.name}}"
-        cisco.dcnm.dcnm_rest:
-            method: POST
-            path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
-            json_data: "{{ vars_dict | to_json }}"
-        register: r1
-        vars:
-            vars_dict:
-                fabricName: "{{switch_fabrics.f1.name}}"
-                templateName: "{{switch_fabrics.f1.templateName}}"
-                nvPairs: "{{switch_fabrics.f1.nvPairs}}"
-    -   name: debug r1
-        ansible.builtin.debug:
-            msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
+    # -   name: "Create Fabric Switch f1 {{switch_fabrics.f1.name}}"
+    #     cisco.dcnm.dcnm_rest:
+    #         method: POST
+    #         path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
+    #         json_data: "{{ vars_dict | to_json }}"
+    #     register: r1
+    #     vars:
+    #         vars_dict:
+    #             fabricName: "{{switch_fabrics.f1.name}}"
+    #             templateName: "{{switch_fabrics.f1.templateName}}"
+    #             nvPairs: "{{switch_fabrics.f1.nvPairs}}"
+    # -   name: debug r1
+    #     ansible.builtin.debug:
+    #         msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
 
-    -   name: "Create Fabric Switch f2 {{switch_fabrics.f2.name}}"
-        cisco.dcnm.dcnm_rest:
-            method: POST
-            path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
-            json_data: "{{ vars_dict | to_json }}"
-        register: r1
-        vars:
-            vars_dict:
-                fabricName: "{{switch_fabrics.f2.name}}"
-                templateName: "{{switch_fabrics.f2.templateName}}"
-                nvPairs: "{{switch_fabrics.f2.nvPairs}}"
-    -   name: debug r1
-        ansible.builtin.debug:
-            msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
+    # -   name: "Create Fabric Switch f2 {{switch_fabrics.f2.name}}"
+    #     cisco.dcnm.dcnm_rest:
+    #         method: POST
+    #         path: /appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics
+    #         json_data: "{{ vars_dict | to_json }}"
+    #     register: r1
+    #     vars:
+    #         vars_dict:
+    #             fabricName: "{{switch_fabrics.f2.name}}"
+    #             templateName: "{{switch_fabrics.f2.templateName}}"
+    #             nvPairs: "{{switch_fabrics.f2.nvPairs}}"
+    # -   name: debug r1
+    #     ansible.builtin.debug:
+    #         msg: "r1 {{r1.response.RETURN_CODE}} {{r1.response.MESSAGE}} {{r1.response.DATA.templateName}} {{r1.response.DATA.nvPairs.FABRIC_NAME}}"
 
     -   name: "Fabric {{ switch_fabrics.f1.name }} - Add switches"
         cisco.dcnm.dcnm_inventory:
