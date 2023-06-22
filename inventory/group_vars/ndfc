@@ -3,8 +3,10 @@ ansible_network_os: cisco.dcnm.dcnm
 ansible_httpapi_validate_certs: no
 ansible_httpapi_use_ssl: yes
 ansible_user: admin
-device_username: admin
 device_auth_proto: MD5
+device_username: admin
+preserve_config: False
+max_hops: 0
 device_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           39633834633537663061663539313532636263366231336166666465396634306233303964323464
@@ -667,118 +669,118 @@ devices:
         name: leaf_1311
         role: leaf
         seed_ip: 192.168.4.131
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     leaf_12:
         name: leaf_1312
         role: leaf
         seed_ip: 192.168.4.132
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     spine_11:
         name: spine_1211
         role: spine
         seed_ip: 192.168.4.151
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     spine_12:
         name: spine_1212
         role: spine
         seed_ip: 192.168.4.152
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     border_gateway_11:
         name: bgw_1111
         role: border_gateway
         seed_ip: 192.168.4.161
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     border_gateway_12:
         name: bgw_1112
         role: border_gateway
         seed_ip: 192.168.4.162
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
 
     # switch_fabric f2 ----------------------------------------------
     leaf_21:
         name: leaf_2311
         role: leaf
         seed_ip: 192.168.4.133
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     leaf_22:
         name: leaf_2312
         role: leaf
         seed_ip: 192.168.4.134
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     spine_21:
         name: spine_2211
         role: spine
         seed_ip: 192.168.4.153
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     spine_22:
         name: spine_2212
         role: spine
         seed_ip: 192.168.4.154
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     border_gateway_21:
         name: bgw_2111
         seed_ip: 192.168.4.163
         role: border_gateway
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     border_gateway_22:
         name: bgw_2112
         role: border_gateway
         seed_ip: 192.168.4.164
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
     dci_31:
         name: dci_111
         role: core_router
         seed_ip: 192.168.4.171
-        max_hops: "{{ devices.common.max_hops }}"
-        auth_proto: "{{ devices.common.device_auth_proto }}"
-        password: "{{ devices.common.device_password }}"
-        user_name: "{{ devices.common.device_username }}"
-        preserve_config: "{{ devices.common.preserve_config }}"
+        max_hops: "{{ max_hops }}"
+        auth_proto: "{{ device_auth_proto }}"
+        password: "{{ device_password }}"
+        user_name: "{{ device_username }}"
+        preserve_config: "{{ preserve_config }}"
