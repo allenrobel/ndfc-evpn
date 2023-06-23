@@ -1,0 +1,1 @@
+docker exec -it clab-nxos-host_1412 bash

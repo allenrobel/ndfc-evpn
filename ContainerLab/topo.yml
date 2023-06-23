@@ -1,0 +1,172 @@
+name: nxos
+
+mgmt:
+  bridge: br-oob
+  ipv4-subnet: 192.168.2.0/24
+  ipv4-gw: 192.168.2.1
+  ipv4-range: 192.168.2.128/25
+  ipv6-subnet: 2001:192:168:2::/80
+  ipv6-gw: 2001:192:168:2::1
+
+topology:
+  kinds:
+    vr-n9kv:
+      image: quantumonion/n9kv:10.3.1
+    linux:
+      #image: wbitt/network-multitool:alpine-extra
+      image: quantumonion/netool:latest
+      env:
+        HTTPS_PROXY: http://proxy.esl.cisco.com:80
+        NO_PROXY: cisco.com,arobel.com,localhost,172.31.165.33
+      wait-for:
+        - leaf_1311
+        - leaf_1312
+        - leaf_2311
+        - leaf_2312
+        - spine_1211
+        - spine_1212
+        - spine_2211
+        - spine_2212
+        - bgw_1111
+        - bgw_1112
+        - bgw_2111
+        - bgw_2112
+        - dci_111
+  nodes:
+    br-vnd:
+      kind: bridge
+    host_1411:
+      kind: linux
+      env:
+        HOST: host_1411
+        VRF: Clients
+      mgmt-ipv4: 192.168.2.201
+      mgmt-ipv6: 2001:192:168:2::201
+    host_1412:
+      kind: linux
+      env:
+        HOST: host_1412
+        VRF: Servers
+      mgmt-ipv4: 192.168.2.202
+      mgmt-ipv6: 2001:192:168:2::202
+    host_2411:
+      kind: linux
+      env:
+        HOST: host_2411
+        VRF: Clients
+      mgmt-ipv4: 192.168.2.203
+      mgmt-ipv6: 2001:192:168:2::203
+    host_2412:
+      kind: linux
+      env:
+        HOST: host_2412
+        VRF: Servers
+      mgmt-ipv4: 192.168.2.204
+      mgmt-ipv6: 2001:192:168:2::204
+    # Site_1
+    leaf_1311:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.131
+      mgmt-ipv6: 2001:192:168:2::131
+      startup-config: leaf_1311.cfg
+    leaf_1312:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.132
+      mgmt-ipv6: 2001:192:168:2::132
+      startup-config: leaf_1312.cfg
+    spine_1211:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.151
+      mgmt-ipv6: 2001:192:168:2::151
+      startup-config: spine_1211.cfg
+    spine_1212:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.152
+      mgmt-ipv6: 2001:192:168:2::152
+      startup-config: spine_1212.cfg
+    bgw_1111:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.161
+      mgmt-ipv6: 2001:192:168:2::161
+      startup-config: bgw_1111.cfg
+    bgw_1112:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.162
+      mgmt-ipv6: 2001:192:168:2::162
+      startup-config: bgw_1112.cfg
+    # Site_2
+    leaf_2311:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.133
+      mgmt-ipv6: 2001:192:168:2::133
+      startup-config: leaf_2311.cfg
+      startup-delay: 720
+    leaf_2312:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.134
+      mgmt-ipv6: 2001:192:168:2::134
+      startup-config: leaf_2312.cfg
+      startup-delay: 720
+    spine_2211:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.153
+      mgmt-ipv6: 2001:192:168:2::153
+      startup-config: spine_2211.cfg
+      startup-delay: 720
+    spine_2212:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.154
+      mgmt-ipv6: 2001:192:168:2::154
+      startup-config: spine_2212.cfg
+      startup-delay: 720
+    bgw_2111:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.163
+      mgmt-ipv6: 2001:192:168:2::163
+      startup-config: bgw_2111.cfg
+      startup-delay: 720
+    bgw_2112:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.164
+      mgmt-ipv6: 2001:192:168:2::164
+      startup-config: bgw_2112.cfg
+      startup-delay: 720
+    # DCI
+    dci_111:
+      kind: vr-n9kv
+      mgmt-ipv4: 192.168.2.171
+      mgmt-ipv6: 2001:192:168:2::171
+      startup-config: dci_111.cfg
+      startup-delay: 1080
+
+  links:
+    # hosts
+    - endpoints: ["leaf_1311:eth64", "host_1411:eth1"]
+    - endpoints: ["leaf_1312:eth64", "host_1412:eth1"]
+    - endpoints: ["leaf_2311:eth64", "host_2411:eth1"]
+    - endpoints: ["leaf_2312:eth64", "host_2412:eth1"]
+    # Site1 spine - leaf
+    - endpoints: ["spine_1211:eth1", "leaf_1311:eth1"]
+    - endpoints: ["spine_1211:eth2", "leaf_1312:eth1"]
+    - endpoints: ["spine_1212:eth1", "leaf_1311:eth2"]
+    - endpoints: ["spine_1212:eth2", "leaf_1312:eth2"]
+    # Site2 spine - leaf
+    - endpoints: ["spine_2211:eth1", "leaf_2311:eth1"]
+    - endpoints: ["spine_2211:eth2", "leaf_2312:eth1"]
+    - endpoints: ["spine_2212:eth1", "leaf_2311:eth2"]
+    - endpoints: ["spine_2212:eth2", "leaf_2312:eth2"]
+    # Site1 bgw - spine
+    - endpoints: ["bgw_1111:eth1", "spine_1211:eth3"]
+    - endpoints: ["bgw_1111:eth2", "spine_1212:eth3"]
+    - endpoints: ["bgw_1112:eth1", "spine_1211:eth4"]
+    - endpoints: ["bgw_1112:eth2", "spine_1212:eth4"]
+    # Site2 bgw - spine
+    - endpoints: ["bgw_2111:eth1", "spine_2211:eth3"]
+    - endpoints: ["bgw_2111:eth2", "spine_2212:eth3"]
+    - endpoints: ["bgw_2112:eth1", "spine_2211:eth4"]
+    - endpoints: ["bgw_2112:eth2", "spine_2212:eth4"]
+    # DCI - BGW
+    - endpoints: ["dci_111:eth1", "bgw_1111:eth3"]
+    - endpoints: ["dci_111:eth2", "bgw_1112:eth3"]
+    - endpoints: ["dci_111:eth3", "bgw_2111:eth3"]
+    - endpoints: ["dci_111:eth4", "bgw_2112:eth3"]
