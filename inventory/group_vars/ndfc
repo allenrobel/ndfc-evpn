@@ -833,17 +833,17 @@ networks:
             ports:
                 - Ethernet1/64
         -   ip_address: "{{ devices.leaf_21.seed_ip }}"
-            ports:
+            ports: []
         -   ip_address: "{{ devices.leaf_22.seed_ip }}"
-            ports:
+            ports: []
         -   ip_address: "{{ devices.border_gateway_11.seed_ip }}"
-            ports:
+            ports: []
         -   ip_address: "{{ devices.border_gateway_12.seed_ip }}"
-            ports:
+            ports: []
         -   ip_address: "{{ devices.border_gateway_21.seed_ip }}"
-            ports:
+            ports: []
         -   ip_address: "{{ devices.border_gateway_22.seed_ip }}"
-            ports:
+            ports: []
     n2:
         fabric: "{{ msd_fabrics.MSD.name }}"
         net_name: Servers_NET_1
@@ -856,26 +856,19 @@ networks:
         attach:
         -   ip_address: "{{ devices.leaf_11.seed_ip }}"
             ports: []
-            deploy: true
         -   ip_address: "{{ devices.leaf_12.seed_ip }}"
             ports: []
-            deploy: true
         -   ip_address: "{{ devices.leaf_21.seed_ip }}"
             ports:
                 - Ethernet1/64
-            deploy: true
         -   ip_address: "{{ devices.leaf_22.seed_ip }}"
-            ports: []
-            deploy: true
+            ports:
+                - Ethernet1/64
         -   ip_address: "{{ devices.border_gateway_11.seed_ip }}"
             ports: []
-            deploy: true
         -   ip_address: "{{ devices.border_gateway_12.seed_ip }}"
             ports: []
-            deploy: true
         -   ip_address: "{{ devices.border_gateway_21.seed_ip }}"
             ports: []
-            deploy: true
         -   ip_address: "{{ devices.border_gateway_22.seed_ip }}"
             ports: []
-            deploy: true
