@@ -1,5 +1,7 @@
 # ContainerLab
 
+![ContainerLab Topology](./images/ContainerLab_Topology.png)
+
 See [ContainerLab](https://containerlab.dev) to download ContainerLab and for instructions for installation.
 
 [ContainerLab Installation Instructions](https://containerlab.dev/install/)
@@ -29,6 +31,12 @@ containerlab inspect --topo topo.yml
 ```bash
 containerlab destroy --topo topo.yml
 ```
+
+### Host VM configuration
+
+Hosts connect to the leafs on trunk port Ethernet1/64 in vlan 2300 (vrf Clients) and vlan 2301 (vrf Servers).
+
+Use host-config.sh in this directory to add the appropriate vlan configuration for these host VMs.
 
 ### Base switch configurations
 
