@@ -1,5 +1,5 @@
 ---
--   name: EVPN Create
+-   name: Create 2x VXLAN/EVPN, 1x MSD, 1x DCI Fabric with Centralized_To_Route_Server MSD option
     gather_facts: false
     hosts:
     -   ndfc
@@ -133,6 +133,26 @@
             path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ dci_fabrics.DCI.name }}/config-deploy"
             json_data: "{{ {} | to_json }}"
 
+    -   name: Add DCI Loopback Interface
+        cisco.dcnm.dcnm_interface:
+            fabric: "{{ dci_fabrics.DCI.name }}"
+            state: merged
+            config:
+            -   name: lo2
+                type: lo
+                switch:
+                - "{{ devices.dci_11.seed_ip }}"
+                deploy: true
+                profile:
+                admin_state: true
+                mode: lo
+                int_vrf: ""
+                ipv4_addr: 1.1.1.1
+                ipv6_addr: ""
+                route_tag: "12345"
+                cmds:
+                - no shutdown
+                description: "DCI Peering"
 
     -   name: "Add FABRIC {{ switch_fabrics.f1.name }} to MSD FABRIC {{msd_fabrics.MSD.name}}"
         ansible.builtin.include_role:
@@ -171,23 +191,14 @@
             -   "{{ networks.n1 }}"
             -   "{{ networks.n2 }}"
 
-    -   name: Add DCI Loopback Interface
-        cisco.dcnm.dcnm_interface:
-            fabric: "{{ dci_fabrics.DCI.name }}"
-            state: merged
-            config:
-            -   name: lo2
-                type: lo
-                switch:
-                - "{{ devices.dci_11.seed_ip }}"
-                deploy: true
-                profile:
-                admin_state: true
-                mode: lo
-                int_vrf: ""
-                ipv4_addr: 1.1.1.1
-                ipv6_addr: ""
-                route_tag: "12345"
-                cmds:
-                - no shutdown
-                description: "DCI Peering"
+    -   name: "main REST POST config-save FABRIC {{ msd_fabrics.MSD.name }}"
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ msd_fabrics.MSD.name }}/config-save"
+            json_data: "{{ {} | to_json }}"
+
+    -   name: "main REST POST config-deploy FABRIC {{ msd_fabrics.MSD.name }}"
+        cisco.dcnm.dcnm_rest:
+            method: POST
+            path: "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{{ msd_fabrics.MSD.name }}/config-deploy"
+            json_data: "{{ {} | to_json }}"
