@@ -116,7 +116,7 @@
 
     -   name: "Fabric {{ dci_fabrics.DCI.name }} - Add switches"
         cisco.dcnm.dcnm_inventory:
-            fabric: "{{ switch_fabrics.f2.name }}"
+            fabric: "{{ dci_fabrics.DCI.name }}"
             state: merged
             config:
             -   "{{ devices.dci_11 }}"
