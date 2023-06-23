@@ -769,6 +769,7 @@ devices:
         password: "{{ device_password }}"
         user_name: "{{ device_username }}"
         preserve_config: "{{ preserve_config }}"
+    # Fabric DCI
     dci_11:
         name: dci_111
         role: core_router

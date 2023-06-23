@@ -156,9 +156,38 @@
             child_fabric: "{{ dci_fabrics.DCI.name }}"
 
     -   name: "Add VRFs [ {{ vrfs.v1.vrf_name }}, {{ vrfs.v2.vrf_name }} ] to FABRIC {{msd_fabrics.MSD.name}}"
-        cisco.dcnm.dcnm_inventory:
+        cisco.dcnm.dcnm_vrf:
             fabric: "{{ msd_fabrics.MSD.name }}"
             state: merged
             config:
             -   "{{ vrfs.v1 }}"
             -   "{{ vrfs.v2 }}"
+
+    -   name: "Add Networks [ {{ networks.n1.net_name }}, {{ networks.n2.net_name }} ] to FABRIC {{msd_fabrics.MSD.name}}"
+        cisco.dcnm.dcnm_network:
+            fabric: "{{ msd_fabrics.MSD.name }}"
+            state: merged
+            config:
+            -   "{{ networks.n1 }}"
+            -   "{{ networks.n2 }}"
+
+    -   name: Add DCI Loopback Interface
+        cisco.dcnm.dcnm_interface:
+            fabric: "{{ dci_fabrics.DCI.name }}"
+            state: merged
+            config:
+            -   name: lo2
+                type: lo
+                switch:
+                - "{{ devices.dci_11.seed_ip }}"
+                deploy: true
+                profile:
+                admin_state: true
+                mode: lo
+                int_vrf: ""
+                ipv4_addr: 1.1.1.1
+                ipv6_addr: ""
+                route_tag: "12345"
+                cmds:
+                - no shutdown
+                description: "DCI Peering"
