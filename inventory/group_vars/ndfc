@@ -814,3 +814,61 @@ vrfs:
         - ip_address: "{{ devices.border_gateway_12.seed_ip }}"
         - ip_address: "{{ devices.border_gateway_21.seed_ip }}"
         - ip_address: "{{ devices.border_gateway_22.seed_ip }}"
+
+networks:
+    n1:
+        fabric: "{{ msd_fabrics.MSD.name }}"
+        net_name: Clients_NET_1
+        vrf_name: "{{ vrfs.v1.vrf_name }}"
+        vlan_id: 2300
+        gw_ip_subnet: "192.168.10.1/24"
+        tag: 12345
+        net_template: Default_Network_Universal
+        net_extension_template: Default_Network_Extension_Universal
+        attach:
+        -   ip_address: "{{ devices.leaf_11.seed_ip }}"
+            ports:
+                - Ethernet1/64
+        -   ip_address: "{{ devices.leaf_12.seed_ip }}"
+            ports:
+                - Ethernet1/64
+        -   ip_address: "{{ devices.leaf_21.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.leaf_22.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.border_gateway_11.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.border_gateway_12.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.border_gateway_21.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.border_gateway_22.seed_ip }}"
+            ports:
+    n2:
+        fabric: "{{ msd_fabrics.MSD.name }}"
+        net_name: Servers_NET_1
+        vrf_name: "{{ vrfs.v2.vrf_name }}"
+        vlan_id: 2301
+        gw_ip_subnet: "192.168.11.1/24"
+        tag: 12345
+        net_template: Default_Network_Universal
+        net_extension_template: Default_Network_Extension_Universal
+        attach:
+        -   ip_address: "{{ devices.leaf_11.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.leaf_12.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.leaf_21.seed_ip }}"
+            ports:
+                - Ethernet1/64
+        -   ip_address: "{{ devices.leaf_22.seed_ip }}"
+            ports:
+                - Ethernet1/64
+        -   ip_address: "{{ devices.border_gateway_11.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.border_gateway_12.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.border_gateway_21.seed_ip }}"
+            ports:
+        -   ip_address: "{{ devices.border_gateway_22.seed_ip }}"
+            ports:
