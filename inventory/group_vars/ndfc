@@ -778,3 +778,38 @@ devices:
         password: "{{ device_password }}"
         user_name: "{{ device_username }}"
         preserve_config: "{{ preserve_config }}"
+
+vrfs:
+    v1:
+        vrf_name: Clients
+        vrf_id: 50000
+        vlan_id: 2000
+        vrf_template: Default_VRF_Universal
+        vrf_extension_template: Default_VRF_Extension_Universal
+        service_vrf_template: null
+        attach:
+        - ip_address: "{{ devices.leaf_11.ip }}"
+        - ip_address: "{{ devices.leaf_12.ip }}"
+        - ip_address: "{{ devices.leaf_21.ip }}"
+        - ip_address: "{{ devices.leaf_22.ip }}"
+        - ip_address: "{{ devices.border_gateway_11.ip }}"
+        - ip_address: "{{ devices.border_gateway_12.ip }}"
+        - ip_address: "{{ devices.border_gateway_21.ip }}"
+        - ip_address: "{{ devices.border_gateway_22.ip }}"
+
+  v2:
+        vrf_name: Servers
+        vrf_id: 50001
+        vlan_id: 2001
+        vrf_template: Default_VRF_Universal
+        vrf_extension_template: Default_VRF_Extension_Universal
+        service_vrf_template: null
+        attach:
+        - ip_address: "{{ devices.leaf_11.ip }}"
+        - ip_address: "{{ devices.leaf_12.ip }}"
+        - ip_address: "{{ devices.leaf_21.ip }}"
+        - ip_address: "{{ devices.leaf_22.ip }}"
+        - ip_address: "{{ devices.border_gateway_11.ip }}"
+        - ip_address: "{{ devices.border_gateway_12.ip }}"
+        - ip_address: "{{ devices.border_gateway_21.ip }}"
+        - ip_address: "{{ devices.border_gateway_22.ip }}"

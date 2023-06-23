@@ -154,3 +154,11 @@
         vars:
             msd_fabric: "{{msd_fabrics.MSD.name}}"
             child_fabric: "{{ dci_fabrics.DCI.name }}"
+
+    -   name: "Add VRFs [ {{ vrfs.v1.vrf_name }}, {{ vrfs.v2.vrf_name }} ] to FABRIC {{msd_fabrics.MSD.name}}"
+        cisco.dcnm.dcnm_inventory:
+            fabric: "{{ msd_fabrics.MSD.name }}"
+            state: merged
+            config:
+            -   "{{ vrfs.v1 }}"
+            -   "{{ vrfs.v2 }}"
