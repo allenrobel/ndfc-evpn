@@ -786,6 +786,8 @@ vrfs:
         vrf_name: Clients
         vrf_id: 50000
         vlan_id: 2000
+        import_vpn_rt: 65001:50001,65002:50002
+        import_evpn_rt: 65001:50001,65002:50002
         vrf_template: Default_VRF_Universal
         vrf_extension_template: Default_VRF_Extension_Universal
         service_vrf_template: null
@@ -803,6 +805,8 @@ vrfs:
         vrf_name: Servers
         vrf_id: 50001
         vlan_id: 2001
+        import_vpn_rt: 65001:50000,65002:50000
+        import_evpn_rt: 65001:50000,65002:50000
         vrf_template: Default_VRF_Universal
         vrf_extension_template: Default_VRF_Extension_Universal
         service_vrf_template: null
