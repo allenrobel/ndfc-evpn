@@ -791,6 +791,7 @@ vrfs:
         vrf_template: Default_VRF_Universal
         vrf_extension_template: Default_VRF_Extension_Universal
         service_vrf_template: null
+        l3gw_on_border: true
         attach:
         - ip_address: "{{ devices.leaf_11.seed_ip }}"
         - ip_address: "{{ devices.leaf_12.seed_ip }}"
@@ -810,6 +811,7 @@ vrfs:
         vrf_template: Default_VRF_Universal
         vrf_extension_template: Default_VRF_Extension_Universal
         service_vrf_template: null
+        l3gw_on_border: true
         attach:
         - ip_address: "{{ devices.leaf_11.seed_ip }}"
         - ip_address: "{{ devices.leaf_12.seed_ip }}"
