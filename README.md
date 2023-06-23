@@ -1,8 +1,11 @@
-# NDFC-AIML-Fabric
+# NDFC-EVPN
 
 ## About
 
-This repository contains an Ansible playbook and related assets which use Cisco's Nexus Dashboard Fabric Controller (NDFC) to provision an EVPN Multi-Site environment.
+This repository contains two things:
+
+1. An Ansible playbook and related assets which use Cisco's Nexus Dashboard Fabric Controller (NDFC) to provision an EVPN Multi-Site environment using the Centralized_To_Route_Server DCI option.
+2. A ContainerLab topology file and base configurations for n9000v to create an EVPN Multi-site lab.
 
 The environment consists of:
 
@@ -10,29 +13,57 @@ The environment consists of:
 - 1x DCI Fabric (External_Fabric)
 - 1x MSD Multi-site Domain Fabric (MSD_Fabric)
 
-# MSD Fabric Characteristics
+![Topology](./images/Topology.png)
+
+### MSD Fabric Characteristics
 - Centralized_To_Route_Server DCI option
 
-# DCI Fabric Characteristics
-- 1x core_router (functional role: centralized route-server
+### DCI Fabric Characteristics
+- 1x core_router (functional role: centralized route-server)
 
-# VXLAN/EVPN Fabric Characteristics
+### VXLAN/EVPN Fabric Characteristics
 - 2x border_gateway
 - 2x spine
 - 2x leaf
+- 2x host (one host connected to each leaf on Ethernet1/64)
 
 ## Repository Contents
 
-1. EVPN.yml - The playbook which creates the environment
+1. EVPN.yml - The Ansible playbook which configures the Nexus switches
 2. doc/* - Informational files for the curious
 3. inventory/* - Edit inventory/hosts and inventory/group_vars/ndfc per steps 3 and 4 below.
 4. ansible.cfg - Required for NDFC.  See step 2 below.
+5. ContainerLab/* - Topology file and n9000v base configurations for creating an EVPN Multi-site lab.
 
-## Topology
+## System Requirements
 
-![EVPN_Topology](./doc/Topology.png "EVPN Topology")
+This repo was tested in the following environment.
+
+- Cisco UCS C245 M6SX server with 512GB RAM, 2x 3000mHz AMD EPYC 7313 16-Core Processors, Cisco 12G SAS HBA controller, and Toshiba SSD drives.
+- Ubuntu 22.04.2 LTS
+- Virtual Machine Manager, 4.0.0
+- Virtual single-node Nexus Dashboard 2.3(2d) running under KVM
+- Nexus Dashboard Fabric Controller 12.1(2e)
+
+When the lab is fully launched, and NDFC has discovered and configured all 13 n9000v, memory utilization was approximately 193GB and open files were about 89,000:
+
+```bash
+root@cvd-3:~# free -m
+               total        used        free      shared  buff/cache   available
+Mem:          515839      192317      144207          28      179314      320153
+Swap:           8191           0        8191
+root@cvd-3:~# lsof -w | wc -l
+88696
+root@cvd-3:~# 
+```
+
+This included Xtigervnc displaying an Xfce desktop with Virtual Machine Manager, and three open terminals running.
+
+We accessed NDFC GUI with Chrome running on a separate server, since Chrome opens many files (as determined with ``lsof | wc -l``) and we were hitting a limit for open files when running Chrome locally.  There are ways to increase the open file limit (``ulimit -n``) if this becomes an issue for you.
 
 ## Installation and Usage
+
+The steps below outline usage of the Ansible playbook EVPN.yml and, optionally, building a lab using ContainerLab.
 
 ### 1. Install the cisco.dcnm Ansible Collection 
 
@@ -53,6 +84,13 @@ connect_timeout=1800
 ```
 
 ### 3. Modify ./inventory/group_vars/ndfc
+
+./inventory/group_vars/ndfc contains the following:
+
+- Usernames and passwords for NDFC and NX-OS devices
+- NX-OS switch discovery addresses and role definitions
+- Fabrics, VRFs, and Networks configurations for VXLAN/EVPN
+- Various Ansible settings for NDFC
 
 #### Edit ``ansible_password`` (password for NDFC controller) and ``device_password`` (password for NX-OS switches)
 
@@ -109,7 +147,20 @@ ansible_user: voldomort
 device_username: admin
 ```
 
-### 4. Update ``./inventory/hosts/hosts`` with the IP address of your DCNM/NDFC Controller
+#### If using physical NX-OS switches, edit the discovery IP addresses for your switches
+
+See the following section:
+
+```yaml
+devices:
+    leaf_11:
+etc...
+```
+
+If you plan to use ContainerLab to provision your lab, see the ContainerLab directory in this repo for the base switch configurations. These match the discovery IP addresses in group_vars/ndfc.
+
+
+### 4. Update ``./inventory/hosts/hosts`` with the IP address of your ND/NDFC Controller
 
 ```bash
 % cat ./inventory/hosts/hosts 
@@ -120,16 +171,14 @@ ndfc:
       ansible_host: 192.168.1.1
 ```
 
-### 5. Update the vars section of the ``AIML_Fabric.yml`` playbook with the IP addresses and serial numbers of your switches, and with the PTP source IP that we are configuring on leaf1.
 
-
-### 6. Run the playbook
+### 5. Run the playbook
 
 #### If you encrypted your NDFC password:
 
 ```bash
 cd /top/level/directory/for/this/repo
-ansible-playbook AIML_Fabric.yml -i inventory --ask-vault-pass 
+ansible-playbook EVPN.yml -i inventory --ask-vault-pass 
 ```
 
 When prompted, enter the password you used in response to the ansible-vault command in step 1 above.
@@ -138,5 +187,5 @@ When prompted, enter the password you used in response to the ansible-vault comm
 
 ```bash
 cd /top/level/directory/for/this/repo
-ansible-playbook AIML_Fabric.yml -i inventory
+ansible-playbook EVPN.yml -i inventory
 ```

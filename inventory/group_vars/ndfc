@@ -93,8 +93,7 @@ dci_fabrics:
         ENABLE_NETFLOW_PREV: 'false'
         AAA_REMOTE_IP_ENABLED: 'false'
 
-# Multi-Site Domain (MSD) Fabric parameters
-# These are created with the MSD_Fabric template
+# Multi-Site Domain (MSD) Fabric
 msd_fabrics:
   MSD:
     name: MSD
@@ -147,20 +146,8 @@ msd_fabrics:
         BORDER_GWY_CONNECTIONS: Centralized_To_Route_Server
         L2_SEGMENT_ID_RANGE: 30000-49000
         MS_IFC_BGP_PASSWORD_PREV: ''
-# Easy_Fabric VXLAN fabric parameters
-# These are created using the Easy_Fabric template
-# Multicast replication mode requires the following: 
-#
-#   ANYCAST_RP_IP_RANGE: 10.254.1.0/24
-#   REPLICATION_MODE: Multicast
-#
-# Ingress replication mode, requires the following (note that
-# ANYCAST_RP_IP_RANGE needs to be commented, or removed, if 
-# REPLICATION_MODE is set to Ingress):
-#
-#   # ANYCAST_RP_IP_RANGE: COMMENTED OR REMOVED
-#   REPLICATION_MODE: Ingress
 
+# Easy_Fabric VXLAN fabrics
 switch_fabrics:
   f1:
     name: f1
@@ -833,6 +820,8 @@ networks:
         net_template: Default_Network_Universal
         net_extension_template: Default_Network_Extension_Universal
         # https://github.com/CiscoDevNet/ansible-dcnm/issues/185
+        # Setting the multicast_group_address to an empty string as a workaround
+        # for ansible-dcnm issue 185.
         multicast_group_address: ""
         attach:
         -   ip_address: "{{ devices.border_gateway_11.seed_ip }}"
@@ -871,6 +860,8 @@ networks:
         net_template: Default_Network_Universal
         net_extension_template: Default_Network_Extension_Universal
         # https://github.com/CiscoDevNet/ansible-dcnm/issues/185
+        # Setting the multicast_group_address to an empty string as a workaround
+        # for ansible-dcnm issue 185.
         multicast_group_address: ""
         attach:
         -   ip_address: "{{ devices.border_gateway_11.seed_ip }}"
