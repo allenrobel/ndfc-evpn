@@ -798,7 +798,7 @@ vrfs:
         - ip_address: "{{ devices.border_gateway_21.ip }}"
         - ip_address: "{{ devices.border_gateway_22.ip }}"
 
-  v2:
+    v2:
         vrf_name: Servers
         vrf_id: 50001
         vlan_id: 2001
