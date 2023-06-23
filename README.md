@@ -30,10 +30,9 @@ The environment consists of:
 ## Repository Contents
 
 1. EVPN.yml - The Ansible playbook which configures the Nexus switches
-2. doc/* - Informational files for the curious
-3. inventory/* - Edit inventory/hosts and inventory/group_vars/ndfc per steps 3 and 4 below.
-4. ansible.cfg - Required for NDFC.  See step 2 below.
-5. ContainerLab/* - Topology file and n9000v base configurations for creating an EVPN Multi-site lab.
+2. inventory/* - Edit inventory/hosts and inventory/group_vars/ndfc per steps 3 and 4 below.
+3. ansible.cfg - Required for NDFC.  See step 2 below.
+4. ContainerLab/* - Topology file and n9000v base configurations for creating an EVPN Multi-site lab.
 
 ## System Requirements
 
