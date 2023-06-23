@@ -168,7 +168,7 @@ If you plan to use ContainerLab to provision your lab, see the ContainerLab dire
 ndfc:
   hosts:
     ndfc1:
-      ansible_host: 192.168.1.1
+      ansible_host: 192.168.2.2
 ```
 
 
