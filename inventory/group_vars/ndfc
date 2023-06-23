@@ -825,6 +825,8 @@ networks:
         tag: 12345
         net_template: Default_Network_Universal
         net_extension_template: Default_Network_Extension_Universal
+        # https://github.com/CiscoDevNet/ansible-dcnm/issues/185
+        multicast_group_address: ""
         attach:
         -   ip_address: "{{ devices.leaf_11.seed_ip }}"
             ports:
@@ -853,6 +855,8 @@ networks:
         tag: 12345
         net_template: Default_Network_Universal
         net_extension_template: Default_Network_Extension_Universal
+        # https://github.com/CiscoDevNet/ansible-dcnm/issues/185
+        multicast_group_address: ""
         attach:
         -   ip_address: "{{ devices.leaf_11.seed_ip }}"
             ports: []
