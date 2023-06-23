@@ -855,19 +855,27 @@ networks:
         net_extension_template: Default_Network_Extension_Universal
         attach:
         -   ip_address: "{{ devices.leaf_11.seed_ip }}"
-            ports: ""
+            ports: []
+            deploy: true
         -   ip_address: "{{ devices.leaf_12.seed_ip }}"
-            ports: ""
+            ports: []
+            deploy: true
         -   ip_address: "{{ devices.leaf_21.seed_ip }}"
             ports:
                 - Ethernet1/64
+            deploy: true
         -   ip_address: "{{ devices.leaf_22.seed_ip }}"
-            ports: ""
+            ports: []
+            deploy: true
         -   ip_address: "{{ devices.border_gateway_11.seed_ip }}"
-            ports: ""
+            ports: []
+            deploy: true
         -   ip_address: "{{ devices.border_gateway_12.seed_ip }}"
-            ports:
+            ports: []
+            deploy: true
         -   ip_address: "{{ devices.border_gateway_21.seed_ip }}"
-            ports: ""
+            ports: []
+            deploy: true
         -   ip_address: "{{ devices.border_gateway_22.seed_ip }}"
-            ports: ""
+            ports: []
+            deploy: true
