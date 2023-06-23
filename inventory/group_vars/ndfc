@@ -777,7 +777,8 @@ devices:
         auth_proto: "{{ device_auth_proto }}"
         password: "{{ device_password }}"
         user_name: "{{ device_username }}"
-        preserve_config: "{{ preserve_config }}"
+        # preserve_config must be true for External fabric types
+        preserve_config: true
 
 vrfs:
     v1:
