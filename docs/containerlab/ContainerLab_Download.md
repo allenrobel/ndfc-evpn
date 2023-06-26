@@ -1,6 +1,6 @@
-# 1. Download ContainerLab
+# ContainerLab - Download and Install
 
-[Back](/docs/containerlab/0_ContainerLab_Main.md)
+[Back](/docs/containerlab/ContainerLab_Main.md)
 
 See [ContainerLab](https://containerlab.dev) to download ContainerLab and for instructions for installation.
 
