@@ -1,6 +1,10 @@
 # ContainerLab
 
+See [00_ContainerLab_Main](/docs/containerlab/0_ContainerLab_Main.md) for steps to build a virtual lab using n9000v and ContainerLab.
+
 ![ContainerLab Topology](./images/ContainerLab_Topology.png)
+
+## 1. [Downloading Containerlab](/docs/containerlab/1_ContainerLab_Download.md)
 
 See [ContainerLab](https://containerlab.dev) to download ContainerLab and for instructions for installation.
 
