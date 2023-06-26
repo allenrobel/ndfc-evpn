@@ -8,5 +8,5 @@ See [ContainerLab](https://containerlab.dev) to download ContainerLab and for in
 
 ```bash
 # download and install the latest release (may require sudo)
-bash -c "$(curl -sL https://get.containerlab.dev)"
+sudo bash -c "$(curl -sL https://get.containerlab.dev)"
 ```
