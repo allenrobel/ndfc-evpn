@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-LAB=CVD_3_MSD
+LAB=ndfc-evpn
 ARGS="--connect-timeout 1 --max-time 1"
 EXEC_HOST="docker exec -it"
 EXEC_CONTAINER=/usr/bin/curl
