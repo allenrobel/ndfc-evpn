@@ -12,7 +12,7 @@ Where ``[lab-name]`` is taken from the ``name`` in the first line of ``/ndfc-evp
 
 ``/ndfc-evpn/ContainerLab/clab-evpn/leaf_1311/config/startup-config.cfg``
 
-When a lab is destroyed, these startup-config files are not deleted (unless the ``destroy`` command's ``--cleanup`` option is used) and will be used as the n9000v's startup-config the next time the lab is deployed.  If you want to ContainerLab to ignore these startup-config files when deploying the lab, use the ``--reconfigure`` option, as follows:
+When a lab is destroyed, these startup-config files are not deleted (unless the ``destroy`` command's ``--cleanup`` option is used) and will be used as the n9000v's startup-config the next time the lab is deployed.  If you want ContainerLab to ignore these startup-config files when deploying the lab, use the ``--reconfigure`` option, as follows:
 
 ```bash
 cd ${HOME}/repos/ndfc-evpn/ContainerLab
