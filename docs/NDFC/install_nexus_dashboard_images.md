@@ -64,4 +64,6 @@ Once it's available, you'll point your browser at the provided URL to complete c
 
 In this case ``https://192.168.2.2``
 
+You can now close this terminal.
+
 ![Nexus Dashboard Enter, Review, and Confirm Configuration](/docs/images/nd_system_ui_online.png)
