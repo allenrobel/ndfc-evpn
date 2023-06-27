@@ -62,4 +62,6 @@ After confirming the configuration, it will take another minute or so for Nexus 
 
 Once it's available, you'll point your browser at the provided URL to complete configuration.
 
+In this case ``https://192.168.2.2``
+
 ![Nexus Dashboard Enter, Review, and Confirm Configuration](/docs/images/nd_system_ui_online.png)
