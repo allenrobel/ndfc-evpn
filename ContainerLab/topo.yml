@@ -1,4 +1,4 @@
-name: nxos
+name: evpn
 
 mgmt:
   bridge: br-oob
