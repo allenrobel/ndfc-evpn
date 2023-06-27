@@ -10,6 +10,7 @@ This repository contains two things:
 Read the following two links to bring up this lab.
 
 - [ContainerLab Bringup Step-by-Step Bringup](/docs/containerlab/ContainerLab_Main.md)
+- [Virtual Nexus Dashboard Fabric Controller Bringup Step-by-Step Bringup](/docs/NDFC/NDFC_Main.md)
 - [Ansible Playbook Step-by-Step](/docs/ansible/EVPN_Main.md)
 
 ### Lab Environment
