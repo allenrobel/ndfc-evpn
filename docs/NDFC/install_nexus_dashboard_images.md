@@ -10,7 +10,7 @@ The minimum recommended RAM for Nexus Dashboard is 64000 (64GB).  We've increase
 
 ```bash
 cd ${HOME}/nd
-virt-install --name nd \
+virt-install --name nd_232d \
     --vcpus 16 --ram 96000 --osinfo linux2020 \
     --disk path=${HOME}/nd/nd-node1-disk1.qcow2 \
     --disk path=${HOME}/nd/nd-node1-disk2.qcow2 \
