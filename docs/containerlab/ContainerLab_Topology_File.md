@@ -4,7 +4,7 @@
 
 topo.yml launches the n9000v containerized VMs and hosts, and provisions the inter-switch links and endpoints.
 
-You will want to edit the HTTPS_PROXY and NO_PROXY environment vars for the linux hosts in this file.  You may also want to use the wbitt/network-multitool:alpine-extra container instead of mine (quantumonion/nettool:latest).
+You will want to edit the HTTPS_PROXY and NO_PROXY environment vars for the linux hosts in this file.  You may also want to use the [wbitt/network-multitool:alpine-extra](https://github.com/wbitt/Network-MultiTool) container instead of mine (quantumonion/nettool:latest).
 
 The only difference between these is I changed the default NGINX web page to display the VRF in which the host resides.
 
