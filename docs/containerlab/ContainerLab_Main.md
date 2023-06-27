@@ -7,4 +7,6 @@
 3. [ContainerLab Topology File](/docs/containerlab/ContainerLab_Topology_File.md)
 4. [n9000v - Base Configurations](/docs/containerlab/ContainerLab_n9000v_base_configurations.md)
 5. [Deploying, Inspecting, Destroying the Lab](/docs/containerlab/ContainerLab_Deploying_Inspecting_Destroying.md)
-6. [Verifying Host Connectivity](/docs/containerlab/Verify_Host_Connectivity.md)
+6. [Scripts to Monitor Lab Bringup](/docs/containerlab/ContainerLab_Scripts.md)
+7. [Host Container Network Configuration](docs/containerlab/ContainerLab_Host_Container_Network_Configuration.md)
+8. [Verifying Host Connectivity](/docs/containerlab/ContainerLab_Verify_Host_Connectivity.md)
