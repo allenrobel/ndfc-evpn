@@ -38,6 +38,20 @@ Read the following links to bring up this lab.
 
 ## System Requirements
 
+First, most importantly, your system needs to be able to run hardware accelerated virtual machines.  To check this, the output of the ``kvm-ok`` command should match the following:
+
+```bash
+# If KVM is not yet installed, you'll need to install it first with
+# sudo apt update
+# sudo apt install qemu-kvm
+arobel@cvd-1:~$ kvm-ok
+INFO: /dev/kvm exists
+KVM acceleration can be used
+arobel@cvd-1:~$ 
+```
+
+If the output is not simiar to the above, you might check your BIOS settings to enable this.
+
 This repo was tested in the following environment.
 
 - Cisco UCS C245 M6SX server with 512GB RAM, 2x 3000mHz AMD EPYC 7313 16-Core Processors, Cisco 12G SAS HBA controller, and Toshiba SSD drives.
