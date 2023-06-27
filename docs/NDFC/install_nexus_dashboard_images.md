@@ -56,4 +56,10 @@ Enter the information requested.  If you are using the same addressing as this r
 
 ![Nexus Dashboard Enter, Review, and Confirm Configuration](/docs/images/nd_review_and_confirm_config.png)
 
-After confirming the configuration, it will take another minute or so for Nexus Dashboard to complete 
+After confirming the configuration, it will take another minute or so for Nexus Dashboard to make its UI available.
+
+![Nexus Dashboard Enter, Review, and Confirm Configuration](/docs/images/nd_wait_for_ui_online.png)
+
+Once it's available, you'll point your browser at the provided URL to complete configuration.
+
+![Nexus Dashboard Enter, Review, and Confirm Configuration](/docs/images/nd_system_ui_online.png)
