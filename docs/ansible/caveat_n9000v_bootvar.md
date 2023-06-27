@@ -4,7 +4,7 @@
 
 Intermittently, the ContainerLab virtual console port closes before ContainerLab has a chance to write ``copy running-config startup-config`` to the n9000v.
 
-This results in the n9000v booting the the ``loader>`` when it's next reloaded.
+This results in the n9000v booting the the ``loader>`` prompt when it's next reloaded.
 
 Since NDFC reboots the n9000v during its discovery phase, you may end up with one or more n9000v sitting at the ``loader>`` prompt.
 
@@ -52,6 +52,8 @@ loader> boot bootflash:/nxos64-cs.10.3.1.F.bin
 ```
 
 When the n9000v is booted, login and manually issue ``copy running-config startup-config`` to set the boot variables.
+
+The admin password is ``admin123``. This is configured in the startup files located in ``/ndfc-evpn/ContainerLab/*.cfg``.
 
 ```bash
 bgw_1111 login: admin
