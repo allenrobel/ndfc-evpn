@@ -4,8 +4,11 @@
 
 This repository contains two things:
 
-1. An Ansible playbook and related assets which use Cisco's Nexus Dashboard Fabric Controller (NDFC) to provision an EVPN Multi-Site environment using the Centralized_To_Route_Server DCI option.
-2. A ContainerLab topology file and base configurations for n9000v to create an EVPN Multi-site lab.
+1. A ContainerLab topology file and base configurations for Cisco Nexus n9000v to create an EVPN Multi-site lab.
+2. An Ansible playbook and related assets which use Cisco's Nexus Dashboard Fabric Controller (NDFC) to provision the ContainerLab lab into an EVPN Multi-Site environment using NDFC's Centralized_To_Route_Server DCI option.
+
+[ContainerLab Bringup Step-by-Step Bringup](/docs/containerlab/ContainerLab_Main.md)
+[Ansible Playbook Step-by-Step](/docs/ansible/EVPN_Main.md)
 
 The environment consists of:
 
@@ -13,7 +16,7 @@ The environment consists of:
 - 1x DCI Fabric (External_Fabric)
 - 1x MSD Multi-site Domain Fabric (MSD_Fabric)
 
-![Topology](./images/Topology.png)
+![Topology](/docs/images/NDFC_Topology.png)
 
 ### MSD Fabric Characteristics
 - Centralized_To_Route_Server DCI option
