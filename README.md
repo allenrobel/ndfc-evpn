@@ -55,7 +55,7 @@ If the output is not simiar to the above, you might check your BIOS settings to 
 This repo was tested in the following environment.
 
 - Cisco UCS C245 M6SX server with 512GB RAM, 2x 3000mHz AMD EPYC 7313 16-Core Processors, Cisco 12G SAS HBA controller, and Toshiba SSD drives.
-- Ubuntu 22.04.2 LTS
+- [Ubuntu Server 22.04.2 LTS](https://ubuntu.com/download/server)
 - Virtual Machine Manager, 4.0.0
 - Virtual single-node Nexus Dashboard (ND) 2.3(2d) running under KVM
 - Nexus Dashboard Fabric Controller 12.1(2e) hosted on virtual ND
