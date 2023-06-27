@@ -42,7 +42,7 @@ crw-rw---- 1 root kvm 10, 232 Jun 20 23:52 /dev/kvm  << These are correct permis
 
 ## Nexus Dashboard Initial configuration
 
-When ND has started, click the Open button.  This will open a terminal where you will enter the management network information.
+When ND has started, click the Open button (see previous image).  This will open a terminal (shown in the image below) where you will enter the management network information.
 
 It will take some time for ND to boot so be patient.  You'll see a blinking cursor on a blank screen initially.
 
