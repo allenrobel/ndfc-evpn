@@ -2,14 +2,32 @@
 
 [Back](/docs/containerlab/ContainerLab_Main.md)
 
-Base configurations for n9000v are provided in ./ndfc-evpn/ContainerLab/*.cfg
+Base configurations for n9000v are provided in ``/ndfc-evpn/ContainerLab/*.cfg``
 
 When ContainerLab is started from within this directory, it loads these configurations as the initial running-config for the n9000v instances.
 
+ContainerLab also copies these configurations to ``/ndfc-evpn/ContainerLab/clab-[lab-name]/[switch-name]/config/startup-config.cfg``
+
+Where ``[lab-name]`` is taken from the ``name`` in the first line of ``/ndfc-evpn/ContainerLan/topo.yml`` (in our case ``evpn``) and ``[switch-name]`` is taken from the n9000v's name in ``/ndfc-evpn/ContainerLan/topo.yml``.  For example, the path for leaf_1311 would be:
+
+``/ndfc-evpn/ContainerLab/clab-evpn/leaf_1311/config/startup-config.cfg``
+
+When a lab is destroyed, these startup-config files are not deleted (unless the ``destroy`` command's ``--cleanup`` option is used) and will be used as the n9000v's startup-config the next time the lab is deployed.  If you want to ContainerLab to ignore these startup-config files when deploying the lab, use the ``--reconfigure`` option, as follows:
+
 ```bash
 cd ${HOME}/repos/ndfc-evpn/ContainerLab
+sudo containerlab deploy --topo topo.yml --reconfigure
+```
+
+Alternatively, you could also delete the clab-evpn directory before deploying.  ContainerLab will recreate it with the next ``deploy``:
+
+```bash
+cd ${HOME}/repos/ndfc-evpn/ContainerLab
+sudo rm -rf clab-evpn
 containerlab deploy --topo topo.yml
 ```
+
+For more on ContainerLab's configuration artifacts, see [ContainerLab Configuration Artifacts](https://containerlab.dev/manual/conf-artifacts/)
 
 Since n9000v runs as a containerized VM, there was one challenge in getting this to work with NDFC, as shown in the image below. 
 
