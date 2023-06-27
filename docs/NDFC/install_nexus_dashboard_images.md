@@ -27,9 +27,9 @@ If Virtual Machine Manager is not already open, open it.  Below is an example us
 
 ## Start Nexus Dashboard
 
-![Start Nexus Dashboard](/docs/images/virtual_machine_manager.png)
-
 Click the green Start Arrow.
+
+![Start Nexus Dashboard](/docs/images/virtual_machine_manager.png)
 
 NOTE if Virtual Machine Manager gives a permissions error on starting up the ND VM, try the following; substituting your username for ``username`` below.
 
