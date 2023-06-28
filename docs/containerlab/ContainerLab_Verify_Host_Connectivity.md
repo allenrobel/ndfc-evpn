@@ -37,7 +37,7 @@ root@cvd-3:/home/arobel/repos/ndfc-evpn/ContainerLab#
 
 ## Example output for a non-working case
 
-Below, host_1411's Vlan2300 interface is shutdown using ``ip link Vlan2300 down``.  Hence, it's able to reach its local NGINX instance, but cannot reach the other servers.  Likewise, the other servers cannot reacy host_1411.
+Below, host_1411's Vlan2300 interface is shutdown using ``ip link set Vlan2300 down``.  Hence, it's able to reach its local NGINX instance, but cannot reach the other servers.  Likewise, the other servers cannot reacy host_1411.
 
 ```bash
 root@cvd-3:/home/arobel/repos/ndfc-evpn/ContainerLab# ./test_web.bash 
