@@ -46,17 +46,17 @@ WBITT Network MultiTool (with NGINX) - host_1411 - Clients - 192.168.2.201 - HTT
 curl: (28) Connection timed out after 1001 milliseconds
 curl: (28) Connection timed out after 1001 milliseconds
 curl: (28) Connection timed out after 1000 milliseconds
-CVD_3_MSD clab-nxos-host_1412
+ndfc-evpn clab-nxos-host_1412
 curl: (28) Connection timed out after 1000 milliseconds
 WBITT Network MultiTool (with NGINX) - host_1412 - Servers - 192.168.2.202 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
 WBITT Network MultiTool (with NGINX) - host_2411 - Clients - 192.168.2.203 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
 WBITT Network MultiTool (with NGINX) - host_2412 - Servers - 192.168.2.204 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
-CVD_3_MSD clab-nxos-host_2411
+ndfc-evpn clab-nxos-host_2411
 curl: (28) Connection timed out after 1000 milliseconds
 WBITT Network MultiTool (with NGINX) - host_1412 - Servers - 192.168.2.202 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
 WBITT Network MultiTool (with NGINX) - host_2411 - Clients - 192.168.2.203 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
 WBITT Network MultiTool (with NGINX) - host_2412 - Servers - 192.168.2.204 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
-CVD_3_MSD clab-nxos-host_2412
+ndfc-evpn clab-nxos-host_2412
 curl: (28) Connection timed out after 1001 milliseconds
 WBITT Network MultiTool (with NGINX) - host_1412 - Servers - 192.168.2.202 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
 WBITT Network MultiTool (with NGINX) - host_2411 - Clients - 192.168.2.203 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
