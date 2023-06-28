@@ -41,9 +41,8 @@ Read the following links to bring up this lab.
 First, most importantly, your system needs to be able to run hardware accelerated virtual machines.  To check this, the output of the ``kvm-ok`` command should match the following:
 
 ```bash
-# If KVM is not yet installed, you'll need to install it first with
-# sudo apt update
-# sudo apt install qemu-kvm
+# If kvm-ok is not installed, install it with
+# sudo apt install cpu-checker
 arobel@cvd-1:~$ kvm-ok
 INFO: /dev/kvm exists
 KVM acceleration can be used
