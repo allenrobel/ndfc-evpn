@@ -2,6 +2,10 @@
 
 [Back](/docs/NDFC/NDFC_Main.md)
 
+## Create two linux bridges, if not previously created
+
+[Create Linux Bridges](/docs/containerlab/ContainerLab_Linux_Bridges.md)
+
 ## Use virt-install to install the images previously created with qemu-img
 
 Change the two ``--disk path=`` arguments below to point to the images you previously created.
